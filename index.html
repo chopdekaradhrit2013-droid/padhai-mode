@@ -45,7 +45,6 @@
       z-index: 0;
     }
 
-    /* ===== NAV ===== */
     .nav {
       position: relative;
       z-index: 20;
@@ -69,15 +68,16 @@
     .nav-brand:hover { opacity: 0.9; }
 
     .nav-logo {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
+      display: block;
     }
 
     .nav-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #e8ecf2 0%, #a8b8d0 100%);
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #e8ecf2 0%, #9ab0cc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -122,7 +122,6 @@
 
     .dark-toggle:hover { color: var(--text); }
 
-    /* ===== HERO ===== */
     .hero {
       position: relative;
       z-index: 1;
@@ -132,11 +131,7 @@
       margin: 0 auto;
     }
 
-    .hero-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      opacity: 0.9;
-    }
+    .hero-icon { font-size: 1.8rem; margin-bottom: 12px; opacity: 0.9; }
 
     .hero h1 {
       font-size: clamp(1.7rem, 4vw, 2.35rem);
@@ -188,18 +183,9 @@
       font-size: 1rem;
     }
 
-    .feature-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-    }
+    .feature-title { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+    .feature-desc { font-size: 0.72rem; color: var(--muted); }
 
-    .feature-desc {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    /* ===== AUTH CARD ===== */
     .auth-wrap {
       position: relative;
       z-index: 1;
@@ -247,7 +233,6 @@
 
     .form { display: none; }
     .form.active { display: block; }
-
     .field { margin-bottom: 14px; }
 
     .field label {
@@ -258,10 +243,7 @@
       margin-bottom: 5px;
     }
 
-    .input-wrap {
-      position: relative;
-    }
-
+    .input-wrap { position: relative; }
     .input-wrap .icon {
       position: absolute;
       left: 12px;
@@ -286,7 +268,6 @@
     }
 
     .field input::placeholder { color: #555c6e; }
-
     .field input:focus {
       border-color: rgba(180, 196, 212, 0.4);
       box-shadow: 0 0 0 3px var(--accent-soft);
@@ -309,12 +290,7 @@
       margin: 0;
     }
 
-    .field-row a {
-      color: var(--silver);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
+    .field-row a { color: var(--silver); text-decoration: none; font-weight: 500; }
     .field-row a:hover { text-decoration: underline; }
 
     .btn {
@@ -338,10 +314,7 @@
       color: #0c0e14;
     }
 
-    .btn-primary:hover {
-      filter: brightness(1.07);
-      transform: translateY(-1px);
-    }
+    .btn-primary:hover { filter: brightness(1.07); transform: translateY(-1px); }
 
     .divider {
       display: flex;
@@ -359,10 +332,7 @@
       background: var(--border);
     }
 
-    .socials {
-      display: flex;
-      gap: 10px;
-    }
+    .socials { display: flex; gap: 10px; }
 
     .social-btn {
       flex: 1;
@@ -391,12 +361,7 @@
       color: var(--muted);
     }
 
-    .card-footer a {
-      color: var(--silver);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
+    .card-footer a { color: var(--silver); text-decoration: none; font-weight: 500; }
     .card-footer a:hover { text-decoration: underline; }
 
     .message {
@@ -440,19 +405,18 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
   <nav class="nav">
     <a class="nav-brand" href="javascript:location.reload()" title="Refresh">
-      <svg class="nav-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Angular folded-P matching the selected logo -->
+      <svg class="nav-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PadhaiMode">
         <defs>
-          <linearGradient id="pGrad" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#d0d8e4"/>
-            <stop offset="0.4" stop-color="#a0b4d0"/>
-            <stop offset="1" stop-color="#6a82a8"/>
+          <linearGradient id="pGrad" x1="8" y1="2" x2="42" y2="46" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#e4eaf2"/>
+            <stop offset="0.38" stop-color="#a8bcd8"/>
+            <stop offset="1" stop-color="#5e789c"/>
           </linearGradient>
         </defs>
-        <!-- Angular modern P matching selected logo -->
-        <path d="M10 6 L10 42 L17 42 L17 28 L30 28 C38.5 28 43 22.5 43 16 C43 9.5 38.5 6 30 6 L10 6 Z M17 12 L29 12 C34 12 36.5 13.8 36.5 16.8 C36.5 19.8 34 21.5 29 21.5 L17 21.5 L17 12 Z" fill="url(#pGrad)"/>
+        <path fill="url(#pGrad)" d="M11 4 L23 4 L18.2 13.2 L30.5 13.2 C38.8 13.2 44 18.2 44 24.2 C44 31.6 37.6 36.2 28.4 36.2 L19.8 36.2 L19.8 44 L11 44 L11 4 Z M19.8 20.6 L28.2 20.6 C32.6 20.6 35.2 22.6 35.2 25.6 C35.2 28.6 32.4 30.4 28 30.4 L19.8 30.4 L19.8 20.6 Z"/>
       </svg>
       <span class="nav-title">PadhaiMode</span>
     </a>
@@ -465,13 +429,10 @@
     </ul>
 
     <div class="nav-right">
-      <button class="dark-toggle">
-        <span>◐</span> Dark Mode
-      </button>
+      <button class="dark-toggle"><span>◐</span> Dark Mode</button>
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-icon">🎓</div>
     <h1>Learn Better. <span>Achieve More.</span></h1>
@@ -496,7 +457,6 @@
     </div>
   </section>
 
-  <!-- AUTH CARD -->
   <div class="auth-wrap">
     <div class="card">
       <div class="tabs">
@@ -504,7 +464,6 @@
         <button class="tab" data-tab="signup" onclick="switchTab('signup')">Sign Up</button>
       </div>
 
-      <!-- Sign In -->
       <form class="form active" id="signin-form" onsubmit="handleSignIn(event)">
         <div class="field">
           <label for="signin-email">Email Address</label>
@@ -528,7 +487,6 @@
         <div class="message" id="signin-message"></div>
       </form>
 
-      <!-- Sign Up -->
       <form class="form" id="signup-form" onsubmit="handleSignUp(event)">
         <div class="field">
           <label for="signup-email">Email Address</label>

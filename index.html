@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PadhaiMode — Focused Study</title>
+  <title>PadhaiMode — Focus. Learn. Level Up.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0b;
-      --surface: #141416;
-      --surface-2: #1c1c1f;
-      --border: #2a2a2e;
-      --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --accent: #e4e4e7;
-      --accent-soft: rgba(228, 228, 231, 0.08);
-      --success: #22c55e;
-      --radius: 14px;
-      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      --bg: #050508;
+      --surface: #0f1117;
+      --surface-2: #161922;
+      --border: #252836;
+      --text: #e8eaef;
+      --muted: #8b90a0;
+      --blue: #6b9eff;
+      --blue-soft: #8bb0ff;
+      --silver: #c5cdd9;
+      --accent-soft: rgba(107, 158, 255, 0.12);
+      --success: #34d399;
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -39,16 +36,51 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Subtle gradient background */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59, 130, 246, 0.08), transparent);
+      background:
+        radial-gradient(ellipse 70% 45% at 50% -15%, rgba(107, 158, 255, 0.14), transparent),
+        radial-gradient(ellipse 50% 35% at 85% 100%, rgba(80, 120, 200, 0.07), transparent);
       pointer-events: none;
       z-index: 0;
+    }
+
+    /* Top-left logo — refreshes page */
+    .top-logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      padding: 6px 10px 6px 6px;
+      border-radius: 12px;
+    }
+
+    .top-logo:hover { opacity: 0.85; }
+    .top-logo:active { opacity: 0.7; }
+
+    .logo-svg {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+    }
+
+    .top-logo-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #c5cdd9 0%, #8bb0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .container {
@@ -59,48 +91,42 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      max-width: 440px;
+      padding: 80px 20px 40px;
+      max-width: 420px;
       margin: 0 auto;
       width: 100%;
     }
 
-    /* Brand */
+    /* Center brand */
     .brand {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 36px;
     }
 
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px;
+      display: block;
     }
 
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      color: #0a0a0b;
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
+    .brand-title {
+      font-size: 1.75rem;
       font-weight: 600;
       letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #e8eaef 0%, #8bb0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
     }
 
-    .tagline {
+    .brand-tagline {
       color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 400;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     /* Card */
@@ -108,18 +134,17 @@
       width: 100%;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 28px;
+      border-radius: 18px;
+      padding: 28px 24px;
       box-shadow: var(--shadow);
     }
 
-    /* Tabs */
     .tabs {
       display: flex;
       background: var(--surface-2);
-      border-radius: 12px;
+      border-radius: 11px;
       padding: 4px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .tab {
@@ -130,42 +155,31 @@
       color: var(--muted);
       font-size: 0.9rem;
       font-weight: 500;
-      border-radius: 9px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
       font-family: inherit;
     }
 
     .tab.active {
-      background: var(--surface);
+      background: linear-gradient(135deg, #1a2030 0%, #1e2740 100%);
       color: var(--text);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(107, 158, 255, 0.15);
     }
 
-    .tab:hover:not(.active) {
-      color: var(--text);
-    }
+    .tab:hover:not(.active) { color: var(--text); }
 
-    /* Forms */
-    .form {
-      display: none;
-    }
+    .form { display: none; }
+    .form.active { display: block; }
 
-    .form.active {
-      display: block;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
+    .field { margin-bottom: 16px; }
 
     .field label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       color: var(--muted);
-      margin-bottom: 7px;
-      letter-spacing: 0.01em;
+      margin-bottom: 6px;
     }
 
     .field input {
@@ -181,12 +195,10 @@
       outline: none;
     }
 
-    .field input::placeholder {
-      color: #52525b;
-    }
+    .field input::placeholder { color: #4a5060; }
 
     .field input:focus {
-      border-color: #71717a;
+      border-color: rgba(107, 158, 255, 0.5);
       box-shadow: 0 0 0 3px var(--accent-soft);
     }
 
@@ -200,108 +212,100 @@
       font-family: inherit;
       cursor: pointer;
       transition: all 0.2s ease;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .btn-primary {
-      background: var(--text);
-      color: var(--bg);
+      background: linear-gradient(135deg, #8bb0ff 0%, #6b9eff 50%, #5a8aef 100%);
+      color: #0a0c12;
     }
 
     .btn-primary:hover {
-      background: #d4d4d8;
+      filter: brightness(1.08);
       transform: translateY(-1px);
     }
 
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 22px 0;
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .btn-primary:active { transform: translateY(0); }
 
     .hint {
       text-align: center;
-      margin-top: 20px;
-      font-size: 0.85rem;
+      margin-top: 18px;
+      font-size: 0.82rem;
       color: var(--muted);
-    }
-
-    .hint a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .hint a:hover {
-      text-decoration: underline;
     }
 
     .message {
       display: none;
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 0.875rem;
+      margin-top: 14px;
+      padding: 11px;
+      border-radius: 9px;
+      font-size: 0.85rem;
       text-align: center;
     }
 
     .message.success {
       display: block;
-      background: rgba(34, 197, 94, 0.12);
-      color: #4ade80;
-      border: 1px solid rgba(34, 197, 94, 0.25);
+      background: rgba(52, 211, 153, 0.1);
+      color: #6ee7b7;
+      border: 1px solid rgba(52, 211, 153, 0.25);
     }
 
     .message.error {
       display: block;
-      background: rgba(239, 68, 68, 0.12);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.25);
+      background: rgba(248, 113, 113, 0.1);
+      color: #fca5a5;
+      border: 1px solid rgba(248, 113, 113, 0.25);
     }
 
-    /* Footer */
     footer {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 24px;
-      color: #52525b;
-      font-size: 0.8rem;
+      padding: 20px;
+      color: #3d4252;
+      font-size: 0.78rem;
     }
 
     @media (max-width: 480px) {
-      .card {
-        padding: 28px 20px;
-      }
-      .brand {
-        margin-bottom: 36px;
-      }
+      .top-logo { top: 14px; left: 12px; }
+      .top-logo-text { font-size: 0.95rem; }
+      .container { padding-top: 70px; }
+      .card { padding: 24px 18px; }
+      .brand-logo { width: 60px; height: 60px; }
     }
   </style>
 </head>
 <body>
+  <!-- Top-left logo refreshes the page -->
+  <a href="javascript:location.reload()" class="top-logo" title="Refresh">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pGrad" x1="8" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#c5cdd9"/>
+          <stop offset="0.45" stop-color="#8bb0ff"/>
+          <stop offset="1" stop-color="#5a8aef"/>
+        </linearGradient>
+      </defs>
+      <!-- Angular modern P matching the selected logo -->
+      <path d="M12 8 L12 40 L18 40 L18 28 L28 28 C36 28 40 23 40 17 C40 11 36 8 28 8 L12 8 Z M18 13 L27 13 C32 13 34 14.5 34 17.5 C34 20.5 32 22 27 22 L18 22 L18 13 Z" fill="url(#pGrad)"/>
+    </svg>
+    <span class="top-logo-text">PadhaiMode</span>
+  </a>
+
   <div class="container">
     <div class="brand">
-      <div class="logo">
-        <div class="logo-mark">P</div>
-        <span class="logo-text">PadhaiMode</span>
-      </div>
-      <p class="tagline">Focused study. Zero distractions.</p>
+      <svg class="brand-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="pGrad2" x1="8" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#c5cdd9"/>
+            <stop offset="0.45" stop-color="#8bb0ff"/>
+            <stop offset="1" stop-color="#5a8aef"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 8 L12 40 L18 40 L18 28 L28 28 C36 28 40 23 40 17 C40 11 36 8 28 8 L12 8 Z M18 13 L27 13 C32 13 34 14.5 34 17.5 C34 20.5 32 22 27 22 L18 22 L18 13 Z" fill="url(#pGrad2)"/>
+      </svg>
+      <h1 class="brand-title">PadhaiMode</h1>
+      <p class="brand-tagline">Focus. Learn. Level Up.</p>
     </div>
 
     <div class="card">
@@ -310,7 +314,6 @@
         <button class="tab" data-tab="signup" onclick="switchTab('signup')">Sign Up</button>
       </div>
 
-      <!-- Sign In Form -->
       <form class="form active" id="signin-form" onsubmit="handleSignIn(event)">
         <div class="field">
           <label for="signin-email">Email</label>
@@ -324,7 +327,6 @@
         <div class="message" id="signin-message"></div>
       </form>
 
-      <!-- Sign Up Form -->
       <form class="form" id="signup-form" onsubmit="handleSignUp(event)">
         <div class="field">
           <label for="signup-email">Email</label>
@@ -342,25 +344,18 @@
         <div class="message" id="signup-message"></div>
       </form>
 
-      <p class="hint">
-        Email-only signup · No full name required
-      </p>
+      <p class="hint">Email-only signup · No full name required</p>
     </div>
   </div>
 
-  <footer>
-    PadhaiMode · Built for focused learning
-  </footer>
+  <footer>PadhaiMode · Focus. Learn. Level Up.</footer>
 
   <script>
     function switchTab(tab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
-
       document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
       document.getElementById(tab === 'signin' ? 'signin-form' : 'signup-form').classList.add('active');
-
-      // Clear messages
       document.getElementById('signin-message').className = 'message';
       document.getElementById('signup-message').className = 'message';
     }
@@ -370,8 +365,6 @@
       const email = document.getElementById('signin-email').value.trim();
       const password = document.getElementById('signin-password').value;
       const msg = document.getElementById('signin-message');
-
-      // Placeholder — replace with real auth (Supabase / Firebase etc.)
       if (email && password) {
         msg.textContent = 'Signed in successfully (demo). Connect real auth next.';
         msg.className = 'message success';
@@ -387,20 +380,16 @@
       const password = document.getElementById('signup-password').value;
       const confirm = document.getElementById('signup-confirm').value;
       const msg = document.getElementById('signup-message');
-
       if (password !== confirm) {
         msg.textContent = 'Passwords do not match.';
         msg.className = 'message error';
         return;
       }
-
       if (password.length < 6) {
         msg.textContent = 'Password must be at least 6 characters.';
         msg.className = 'message error';
         return;
       }
-
-      // Placeholder — replace with real auth
       msg.textContent = 'Account created (demo). Connect real auth next.';
       msg.className = 'message success';
     }

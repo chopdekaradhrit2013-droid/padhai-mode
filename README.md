@@ -24,10 +24,6 @@ npm start
 
 Open http://localhost:3000
 
-```bash
-npm run dev
-```
-
 ## Demo accounts
 
 | Role | Email | Password |
@@ -35,7 +31,23 @@ npm run dev
 | Student | adhrit@padhaimode.app | student123 |
 | Educator | priya@padhaimode.app | teacher123 |
 
-Or create an account from Sign Up.
+## GitHub Actions
+
+This repo uses GitHub Actions for CI, not for hosting.
+
+On every push to `main` (and on pull requests), Actions:
+
+1. Installs Node 22
+2. Starts `server.js`
+3. Checks `/api/health`, demo login, marketplace, and quizzes
+
+Open the **Actions** tab to watch the run. A green check means the backend booted.
+
+GitHub Actions / GitHub Pages cannot keep a Node server online for users. To put PadhaiMode on the internet, deploy to Railway, Render, Fly.io, or a VPS:
+
+```bash
+PORT=3000 JWT_SECRET=a-long-random-string npm start
+```
 
 ## API
 
@@ -47,11 +59,3 @@ Or create an account from Sign Up.
 - `DELETE /api/documents/:id`
 - `GET /api/uploads` my notes + stats
 - `GET /api/quizzes` `GET /api/quizzes/:id` `POST /api/quizzes/:id/submit`
-
-## Deploy
-
-```bash
-PORT=3000 JWT_SECRET=a-long-random-string npm start
-```
-
-Railway, Render, Fly.io, or a VPS. GitHub Pages cannot run this backend.

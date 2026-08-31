@@ -1,7 +1,7 @@
-node_modules/
-data/
-uploads/*
-!uploads/seed/
-!uploads/seed/**
+node_modules
+data
 .env
+*.db
+.vercel
 .DS_Store
+server.log

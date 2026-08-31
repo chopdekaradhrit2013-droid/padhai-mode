@@ -2,27 +2,9 @@
 
 **Focus. Learn. Level Up.**
 
-Full-stack study platform for grades 6–10: accounts, documents marketplace, file uploads, visibility controls, and scored quizzes.
+Study platform for grades 6-10: accounts, documents marketplace, uploads, visibility controls, and scored quizzes.
 
-## Stack
-
-- Frontend: HTML, CSS, vanilla JS
-- Backend: Node.js 22+ (`node:http` + built-in `node:sqlite`)
-- Auth: scrypt password hashes + HMAC JWT
-- Files: `uploads/`
-- Database: `data/padhai.db` on first run
-
-No npm packages required.
-
-## Run
-
-Needs **Node 22 or newer**.
-
-```bash
-npm start
-```
-
-Open http://localhost:3000
+Designed to match the PadhaiMode product screens and deploy on Vercel.
 
 ## Demo accounts
 
@@ -31,31 +13,31 @@ Open http://localhost:3000
 | Student | adhrit@padhaimode.app | student123 |
 | Educator | priya@padhaimode.app | teacher123 |
 
-## GitHub Actions
+## Run locally
 
-This repo uses GitHub Actions for CI, not for hosting.
-
-On every push to `main` (and on pull requests), Actions:
-
-1. Installs Node 22
-2. Starts `server.js`
-3. Checks `/api/health`, demo login, marketplace, and quizzes
-
-Open the **Actions** tab to watch the run. A green check means the backend booted.
-
-GitHub Actions / GitHub Pages cannot keep a Node server online for users. To put PadhaiMode on the internet, deploy to Railway, Render, Fly.io, or a VPS:
+Needs Node 18+.
 
 ```bash
-PORT=3000 JWT_SECRET=a-long-random-string npm start
+npm start
 ```
 
-## API
+Open http://localhost:3000
 
-- `POST /api/auth/signup` `POST /api/auth/login` `GET /api/auth/me`
-- `GET /api/documents` public marketplace
-- `POST /api/documents` upload notes (multipart)
-- `GET /api/documents/:id/download`
-- `PATCH /api/documents/:id` visibility
-- `DELETE /api/documents/:id`
-- `GET /api/uploads` my notes + stats
-- `GET /api/quizzes` `GET /api/quizzes/:id` `POST /api/quizzes/:id/submit`
+## Deploy on Vercel
+
+1. Go to vercel.com and sign in with GitHub.
+2. Add New → Project and import `padhai-mode`.
+3. Leave the defaults. Framework preset: Other. Output directory: `public`.
+4. Add environment variable `JWT_SECRET` = a long random string.
+5. Deploy.
+
+Vercel serves `public/` as the website and `api/[...path].js` as the backend.
+
+Hobby plan storage is ephemeral, so demo accounts always work and marketplace notes are seeded on boot.
+
+## Stack
+
+- Frontend: HTML, CSS, vanilla JS in `public/`
+- API: Vercel serverless (`api/[...path].js`) plus the same handler for local `npm start`
+- Auth: scrypt password hashes + HMAC JWT
+- Data: JSON store (file locally, /tmp on Vercel)

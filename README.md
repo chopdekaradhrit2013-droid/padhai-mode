@@ -2,30 +2,56 @@
 
 **Focus. Learn. Level Up.**
 
-Dark-purple study platform for grades 6–10 — documents marketplace, personal uploads, quizzes, and a clean auth landing page.
+Full-stack study platform for grades 6–10: accounts, documents marketplace, file uploads, visibility controls, and scored quizzes.
 
-## Screens
+## Stack
 
-- Landing with Sign In / Sign Up
-- Documents Marketplace (grade + subject filters)
-- My Uploads (stats, visibility, delete)
-- Quizzes
-- Profile
+- Frontend: HTML, CSS, vanilla JS
+- Backend: Node.js 22+ (`node:http` + built-in `node:sqlite`)
+- Auth: scrypt password hashes + HMAC JWT
+- Files: `uploads/`
+- Database: `data/padhai.db` on first run
 
-Auth and uploads are stored locally in the browser for the demo. No backend required.
+No npm packages required.
 
-## Run locally
+## Run
 
-Open `index.html` in a browser, or:
+Needs **Node 22 or newer**.
 
 ```bash
-npx serve .
+npm start
 ```
+
+Open http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Demo accounts
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Student | adhrit@padhaimode.app | student123 |
+| Educator | priya@padhaimode.app | teacher123 |
+
+Or create an account from Sign Up.
+
+## API
+
+- `POST /api/auth/signup` `POST /api/auth/login` `GET /api/auth/me`
+- `GET /api/documents` public marketplace
+- `POST /api/documents` upload notes (multipart)
+- `GET /api/documents/:id/download`
+- `PATCH /api/documents/:id` visibility
+- `DELETE /api/documents/:id`
+- `GET /api/uploads` my notes + stats
+- `GET /api/quizzes` `GET /api/quizzes/:id` `POST /api/quizzes/:id/submit`
 
 ## Deploy
 
-Works on GitHub Pages, Vercel, or Netlify as a static site.
+```bash
+PORT=3000 JWT_SECRET=a-long-random-string npm start
+```
 
----
-
-Built to match the PadhaiMode product UI.
+Railway, Render, Fly.io, or a VPS. GitHub Pages cannot run this backend.

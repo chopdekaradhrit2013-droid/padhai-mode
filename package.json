@@ -1,0 +1,14 @@
+{
+  "name": "padhai-mode",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PadhaiMode — study platform with auth, notes marketplace, uploads and quizzes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,5 @@
+Class 10 Mathematics — Trigonometry
+
+sin²θ + cos²θ = 1
+tanθ = sinθ / cosθ
+Use identities before substituting values.

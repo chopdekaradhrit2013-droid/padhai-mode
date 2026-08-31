@@ -1,0 +1,6 @@
+Class 10 Physics — Motion & Force
+
+Newton's laws, F = ma, momentum, friction.
+1. An object remains at rest or in uniform motion unless acted on by a net force.
+2. F = ma
+3. Every action has an equal and opposite reaction.

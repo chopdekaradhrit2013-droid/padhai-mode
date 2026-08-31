@@ -1,27 +1,31 @@
 # PadhaiMode
 
-**Focused study. Zero distractions.**
+**Focus. Learn. Level Up.**
 
-A clean, professional study platform designed for serious learners.
+Dark-purple study platform for grades 6–10 — documents marketplace, personal uploads, quizzes, and a clean auth landing page.
 
-## Current Status
+## Screens
 
-- Professional landing page with Sign In / Sign Up UI
-- Email-only authentication flow (no full name required)
-- Dark, minimal, classy design
-- Fully responsive (works great on iPad & phone)
+- Landing with Sign In / Sign Up
+- Documents Marketplace (grade + subject filters)
+- My Uploads (stats, visibility, delete)
+- Quizzes
+- Profile
 
-## Live Preview
+Auth and uploads are stored locally in the browser for the demo. No backend required.
 
-Open `index.html` in any browser, or deploy to Vercel / Netlify / GitHub Pages.
+## Run locally
 
-## Next Steps
+Open `index.html` in a browser, or:
 
-- Connect real authentication (Supabase recommended)
-- Notes & test modules
-- Micro-interactions
-- Dashboard after login
+```bash
+npx serve .
+```
+
+## Deploy
+
+Works on GitHub Pages, Vercel, or Netlify as a static site.
 
 ---
 
-Built with care for focused learning.
+Built to match the PadhaiMode product UI.

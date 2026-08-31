@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PadhaiMode — Focus. Learn. Level Up.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="bg-scene"></div>
+  <div id="toast" class="toast"></div>
+
+  <section id="page-landing" class="page">
+    <div class="landing-wrap">
+      <header class="landing-nav">
+        <div class="logo">
+          <div class="logo-mark">P</div>
+          <div>
+            <div class="logo-name">PadhaiMode</div>
+            <div class="logo-tag">Focus. Learn. Level Up.</div>
+          </div>
+        </div>
+        <nav class="landing-links">
+          <a href="#features">Features</a>
+          <a href="#how">How it Works</a>
+          <a href="#plans">Plans</a>
+          <a href="#stories">Testimonials</a>
+        </nav>
+        <button class="btn-white" onclick="document.getElementById('auth-card').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+      </header>
+
+      <div class="hero">
+        <div class="hero-icon">🎓</div>
+        <h1>Learn Better. <em>Achieve More.</em></h1>
+        <p class="lead">PadhaiMode helps you stay focused, organized, and consistent in your studies.</p>
+        <div class="feature-row">
+          <div class="feature-item"><div class="feature-ico">◎</div><div><b>Focus Better</b><span>AI-powered focus sessions</span></div></div>
+          <div class="feature-item"><div class="feature-ico">📊</div><div><b>Track Progress</b><span>Smart analytics & insights</span></div></div>
+          <div class="feature-item"><div class="feature-ico">🏆</div><div><b>Stay Consistent</b><span>Build habits that last</span></div></div>
+        </div>
+      </div>
+
+      <div id="auth-card" class="auth-card">
+        <div class="auth-tabs">
+          <button id="tab-signin" class="auth-tab active" onclick="setAuthTab('signin')">Sign In</button>
+          <button id="tab-signup" class="auth-tab" onclick="setAuthTab('signup')">Sign Up</button>
+        </div>
+        <form id="form-signin" onsubmit="handleAuth(event,'signin')">
+          <div class="field">
+            <div class="field-label">Email Address</div>
+            <div class="input-wrap">
+              <span class="ico">@</span>
+              <input class="input" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label">Password <button type="button" class="forgot" onclick="toast('Demo password: student123')">Forgot Password?</button></div>
+            <div class="input-wrap">
+              <span class="ico">*</span>
+              <input class="input" id="signin-pass" name="password" type="password" placeholder="••••••••" required />
+              <button type="button" class="eye" onclick="togglePass('signin-pass', this)">👁</button>
+            </div>
+          </div>
+          <button class="btn-primary">Sign In <span>→</span></button>
+          <div class="auth-foot">New to PadhaiMode?<br /><button type="button" onclick="setAuthTab('signup')">Create an account</button></div>
+        </form>
+        <form id="form-signup" style="display:none" onsubmit="handleAuth(event,'signup')">
+          <div class="field"><div class="field-label">Full name</div><div class="input-wrap"><span class="ico">A</span><input class="input" name="name" placeholder="Adhrit" /></div></div>
+          <div class="field"><div class="field-label">Email Address</div><div class="input-wrap"><span class="ico">@</span><input class="input" name="email" type="email" placeholder="you@example.com" required /></div></div>
+          <div class="field"><div class="field-label">Password</div><div class="input-wrap"><span class="ico">*</span><input class="input" name="password" type="password" placeholder="At least 6 characters" required /></div></div>
+          <button class="btn-primary">Create account <span>→</span></button>
+          <div class="auth-foot">Already have an account?<br /><button type="button" onclick="setAuthTab('signin')">Sign in</button></div>
+        </form>
+      </div>
+
+      <section id="features" class="section">
+        <h2>Everything you need to study better</h2>
+        <p class="sub">Notes, quizzes and focus tools for grades 6–10.</p>
+        <div class="cards-3">
+          <div class="glass-card"><h3>Documents Marketplace</h3><p>Verified notes from educators. Filter by grade and subject, then download instantly.</p></div>
+          <div class="glass-card"><h3>My Uploads</h3><p>Share your own notes. Keep them public, private or pending review.</p></div>
+          <div class="glass-card"><h3>Quizzes</h3><p>Timed board-pattern quizzes with instant scores so you know what to revise next.</p></div>
+        </div>
+      </section>
+      <section id="how" class="section">
+        <h2>How it works</h2>
+        <p class="sub">Three steps. No clutter.</p>
+        <div class="cards-3">
+          <div class="glass-card"><h3>1. Create an account</h3><p>Sign up as a student or use the demo educator login to explore.</p></div>
+          <div class="glass-card"><h3>2. Browse or upload</h3><p>Pick notes from the marketplace or drop your own study material.</p></div>
+          <div class="glass-card"><h3>3. Quiz yourself</h3><p>Take a subject quiz and track the score on your profile.</p></div>
+        </div>
+      </section>
+      <section id="plans" class="section">
+        <h2>Plans</h2>
+        <p class="sub">Start free. Upgrade when you need more.</p>
+        <div class="cards-3">
+          <div class="glass-card"><h3>Free</h3><div class="plan-price">₹0 <span>/ month</span></div><p>Marketplace downloads, 10 uploads, 3 quizzes a week.</p></div>
+          <div class="glass-card"><h3>Plus</h3><div class="plan-price">₹149 <span>/ month</span></div><p>Unlimited uploads, full quiz bank, focus session history.</p></div>
+          <div class="glass-card"><h3>Pro</h3><div class="plan-price">₹299 <span>/ month</span></div><p>Educator badge, class collections and priority review.</p></div>
+        </div>
+      </section>
+      <section id="stories" class="section">
+        <h2>Loved by students</h2>
+        <p class="sub">What early testers in grades 8–10 said.</p>
+        <div class="cards-3">
+          <div class="glass-card"><h3>“Notes actually match my syllabus.”</h3><p>Priya, Grade 10 — Mumbai</p></div>
+          <div class="glass-card"><h3>“The physics quiz felt like prelims.”</h3><p>Rahul, Grade 10 — Pune</p></div>
+          <div class="glass-card"><h3>“I finally keep my PDFs in one place.”</h3><p>Ananya, Grade 8 — Thane</p></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="page-app" class="page">
+    <div class="wrap">
+      <header class="app-top">
+        <div class="logo"><div class="logo-mark">P</div><div><div class="logo-name">PadhaiMode</div><div class="logo-tag">Focus. Learn. Level Up.</div></div></div>
+        <nav class="nav-pills">
+          <button class="nav-pill" data-tab="documents" onclick="go('documents')">Documents</button>
+          <button class="nav-pill" data-tab="quizzes" onclick="go('quizzes')">Quizzes</button>
+          <button class="nav-pill" data-tab="uploads" onclick="go('uploads')">My Uploads</button>
+          <button class="nav-pill" data-tab="profile" onclick="go('profile')">Profile</button>
+        </nav>
+        <button class="btn-primary inline" onclick="openUploadModal()">+ Upload Notes</button>
+        <div class="avatar" id="top-avatar">A</div>
+      </header>
+      <div id="view-documents">
+        <div class="layout">
+          <aside class="sidebar" id="market-filters"></aside>
+          <main>
+            <div class="search-bar"><span class="sico">⌕</span><input placeholder="Search notes, question papers..." oninput="state.marketQuery=this.value;renderMarketplace()" /></div>
+            <div class="market-head"><h2>Documents Marketplace</h2><p id="market-meta">Verified notes for Grades 6–10</p></div>
+            <div id="market-grid" class="grid-3"></div>
+          </main>
+        </div>
+      </div>
+      <div id="view-uploads" hidden>
+        <div class="layout">
+          <aside class="sidebar" id="upload-filters"></aside>
+          <main>
+            <div class="search-bar"><span class="sico">⌕</span><input placeholder="Search my uploads..." oninput="state.uploadQuery=this.value;renderUploads()" /></div>
+            <div class="grid-3" style="margin-bottom:14px">
+              <div class="stat-card"><div class="stat-icon">📄</div><div><div class="lbl">My total uploads</div><div class="num" id="stat-uploads">0</div></div></div>
+              <div class="stat-card"><div class="stat-icon">👁</div><div><div class="lbl">Total views</div><div class="num" id="stat-views">0</div></div></div>
+              <div class="stat-card"><div class="stat-icon">⬇</div><div><div class="lbl">Total downloads</div><div class="num" id="stat-downloads">0</div></div></div>
+            </div>
+            <div class="dropzone">
+              <div style="font-size:22px">☁</div>
+              <h3>Upload your study materials</h3>
+              <p>Share with grades 6-10</p>
+              <button class="btn-primary inline" onclick="openUploadModal()">Choose Files →</button>
+              <div class="muted" style="margin-top:8px">or drag and drop here</div>
+            </div>
+            <h3 style="margin-bottom:12px">My Uploads</h3>
+            <div id="uploads-grid" class="grid-3"></div>
+          </main>
+        </div>
+      </div>
+      <div id="view-quizzes" hidden>
+        <h2 style="margin:8px 0 16px">Quizzes</h2>
+        <div id="quiz-grid" class="grid-3"></div>
+      </div>
+      <div id="view-profile" hidden>
+        <div class="glass-card" style="max-width:520px;margin:12px 0 40px">
+          <h2 id="profile-name">Student</h2>
+          <p id="profile-email" class="muted" style="margin:6px 0"></p>
+          <p id="profile-role" style="color:#c4b5fd;font-weight:700;margin-bottom:14px">Student</p>
+          <button class="btn-primary inline" onclick="logout()">Sign out</button>
+        </div>
+      </div>
+      <div id="view-take" hidden>
+        <button class="nav-pill" onclick="go('quizzes')">← Back to quizzes</button>
+        <h2 id="take-title" style="margin:16px 0 6px">Quiz</h2>
+        <p id="take-meta" class="muted" style="margin-bottom:16px"></p>
+        <div id="take-result"></div>
+        <div id="take-questions"></div>
+        <button class="btn-primary inline" onclick="submitQuiz()">Submit answers</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="upload-modal" class="modal-back" onclick="if(event.target===this)closeUploadModal()">
+    <form class="modal" onsubmit="submitUpload(event)">
+      <h3 style="margin-bottom:14px">Upload notes</h3>
+      <div class="field"><div class="field-label">Title</div><input class="input" style="padding-left:14px" name="title" placeholder="Class 10 Physics — Motion" /></div>
+      <div class="field"><div class="field-label">Subject</div><select class="input" style="padding-left:14px" name="subject"><option>Physics</option><option>Chemistry</option><option>Biology</option><option>Mathematics</option><option>English Literature</option><option>English Language</option><option>History</option><option>Geography</option><option>Hindi</option><option>Marathi</option></select></div>
+      <div class="field"><div class="field-label">Grade</div><select class="input" style="padding-left:14px" name="grade"><option>6</option><option>7</option><option>8</option><option>9</option><option selected>10</option></select></div>
+      <div class="field"><div class="field-label">File (optional)</div><input class="input" style="padding-left:14px" type="file" name="file" /></div>
+      <div style="display:flex;gap:8px"><button type="button" class="nav-pill" style="flex:1" onclick="closeUploadModal()">Cancel</button><button class="btn-primary" style="flex:1">Upload</button></div>
+    </form>
+  </div>
+  <script src="/js/app.js"></script>
+</body>
+</html>

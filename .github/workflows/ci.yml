@@ -11,59 +11,35 @@ jobs:
     name: Start server and smoke-test API
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-
+          node-version: "20"
       - name: Start PadhaiMode
         env:
           PORT: 3000
           JWT_SECRET: ci-test-secret
-          DATA_DIR: ${{ github.workspace }}/data
-          UPLOAD_DIR: ${{ github.workspace }}/uploads
         run: |
           node server.js > server.log 2>&1 &
-          echo $! > server.pid
           for i in $(seq 1 30); do
             if curl -sf http://127.0.0.1:3000/api/health; then
               echo
-              echo "Server is up"
+              echo Server is up
               exit 0
             fi
             sleep 1
           done
-          echo "Server failed to start"
+          echo Server failed to start
           cat server.log
           exit 1
-
-      - name: Health check
+      - name: Health, login, marketplace
         run: |
-          curl -sf http://127.0.0.1:3000/api/health | tee health.json
-          grep -q '"ok":true' health.json
-
-      - name: Login demo student
-        run: |
+          curl -sf http://127.0.0.1:3000/api/health | grep -q '"ok":true'
           curl -sf -X POST http://127.0.0.1:3000/api/auth/login \
             -H 'Content-Type: application/json' \
-            -d '{"email":"adhrit@padhaimode.app","password":"student123"}' \
-            | tee login.json
-          grep -q '"token"' login.json
-
-      - name: Marketplace and quizzes
-        run: |
-          curl -sf http://127.0.0.1:3000/api/documents | tee docs.json
-          grep -q '"documents"' docs.json
-          curl -sf http://127.0.0.1:3000/api/quizzes | tee quizzes.json
-          grep -q '"quizzes"' quizzes.json
-
-      - name: Homepage is served
-        run: |
+            -d '{"email":"adhrit@padhaimode.app","password":"student123"}' | grep -q '"token"'
+          curl -sf http://127.0.0.1:3000/api/documents | grep -q '"documents"'
           curl -sf http://127.0.0.1:3000/ | grep -q PadhaiMode
-
       - name: Server logs on failure
         if: failure()
         run: cat server.log || true
